@@ -1,10 +1,12 @@
 <html>
+
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {
     box-sizing: border-box;
 }
+
 
 /* Add a gray background color with some padding */
 body {
@@ -71,57 +73,42 @@ body {
         padding: 0;
     }
 }
-</style>
-</head>
-<body>
-
-<div class="header">
-  <h2>Blog Name</h2>
-</div>
 
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
-    <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Sep 2, 2017</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <h2>Список тем задачника Кудрявцева</h2>
+      <h3>1. Выход есть</h3>
+      <p>1. Множества <br>
+     2. Операции над множествами <br>
+	3. Эквивалентные и неэквивалентные множества <br>
+	4. Упорядоченные множества <br>
+	5. Размещения и перестановки <br>
+	6. Сочетания<br>
+	7. Случайные события и их вероятности</p>
+    <h3>2. Выхода нет</h3>
+      <p>1. Множества <br>
+     2. Операции над множествами <br>
+	3. Эквивалентные и неэквивалентные множества <br>
+	4. Упорядоченные множества <br>
+	5. Размещения и перестановки <br>
+	6. Сочетания<br>
+	7. Случайные события и их вероятности</p>
     </div>
   </div>
-    
+
   <div class="rightcolumn">
     <div class="card">
-      <h2>About Me</h2>
-      <div class="fakeimg" style="height:100px;">Image</div>
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-    </div>
-    <div class="card">
-      <h3>Popular Post</h3>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div>
+      <h2>О себе:</h2>
+      <p>Уже сказать и нечего</p>
     </div>
     <div class="card">
       <h3>Контакты: </h3>
       <p>Место для ссылок</p>
     </div>
   </div>
-</div>
 
 <div class="footer">
-  <h2>Footer</h2>
+  <h5>Мог бы решать мат. анализ...</h5>
 </div>
-
-</body>
-</html>
-
-
 
