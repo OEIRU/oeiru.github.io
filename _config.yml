@@ -1,0 +1,49 @@
+# Basic
+title: Resident Math
+subtitle: Всем нужны визитки
+welcome_message: <p>Купи скайрим</p>
+description: Пусть он у вас уже скачан
+creator: <a href="http://onev.cat">@OEIRU</a>
+
+url: "http://voldemar.neonarod.com"
+
+permalink: /:year/:month/:title/
+
+# Format
+highlighter: rouge
+
+# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
+cover_color: blue
+
+# The blog button should not be removed.
+blog_button:
+    title: Блог
+    description: Открыть блог
+
+# Navigation buttons in the front page.
+nav:
+    - {title: Проекты, description: Мои проекты, url: 'https://github.com/OEIRU?tab=repositories'}
+    # - {title: Another Button, description: A button, url: 'http://example.com'}
+
+# Pagination
+plugins: [jekyll-paginate]
+paginate: 10
+paginate_path: "page/:num/"
+
+# Comment
+comment:
+    disqus: OEIRU
+    # duoshuo: 
+    
+# Social
+social:
+    weibo: OEIRU
+    github: OEIRU
+    twitter: OEIRU
+    gplus: 107108267983477358170
+    mail: OEIRU
+
+# Google Analytics
+ga:
+    # id: your_ga_id
+    # host: your_host
