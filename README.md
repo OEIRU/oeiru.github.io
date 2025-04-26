@@ -1,2 +1,2 @@
-# oeiru.github.io
-Resident math
+# 6sem\_main
+
