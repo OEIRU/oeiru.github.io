@@ -7,3 +7,4 @@
   * [2. Основные понятия операционной системы (ОС).](6sem/urvs/2.md)
 * [Гидродед](6sem/gidroded/README.md)
   * [Лекция 1](6sem/gidroded/1.md)
+  * [Лекция 2](6sem/gidroded/lekciya-2.md)
