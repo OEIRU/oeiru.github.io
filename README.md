@@ -6,11 +6,11 @@
 
 Существуют две основные модели жизненного цикла программы:
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Рис 1. Каскадная модель</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (11).png" alt=""><figcaption><p>Рис 1. Каскадная модель</p></figcaption></figure>
 
 В любой момент разработки возможен возврат назад на любой этап.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Рис 2. Спиральная модель</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Рис 2. Спиральная модель</p></figcaption></figure>
 
 _**Анализ:**_ На этом этапе нужно решить, стоит ли создавать новую программу. Возможно,\
 уже созданы программы, решающие данную задачу. Если есть средства разрешения\

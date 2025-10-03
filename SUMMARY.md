@@ -21,3 +21,8 @@
 ***
 
 * [Changelog](changelog.md)
+
+## 7SEM
+
+* [Компьютерная графика](7sem/kompyuternaya-grafika/README.md)
+  * [1. Введение в КГ](7sem/kompyuternaya-grafika/1.-vvedenie-v-kg.md)
