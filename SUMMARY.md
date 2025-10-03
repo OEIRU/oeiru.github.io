@@ -24,5 +24,6 @@
 
 ## 7SEM
 
-* [Компьютерная графика](7sem/kompyuternaya-grafika/README.md)
-  * [1. Введение в КГ](7sem/kompyuternaya-grafika/1.-vvedenie-v-kg.md)
+* [Компьютерная графика](7sem/kg/README.md)
+  * [1. Введение в КГ](7sem/kg/1.md)
+  * [2. Введение в OpenGL](7sem/kg/2.md)
