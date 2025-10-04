@@ -27,3 +27,5 @@
 * [Компьютерная графика](7sem/kg/README.md)
   * [1. Введение в КГ](7sem/kg/1.md)
   * [2. Введение в OpenGL](7sem/kg/2.md)
+* [ЯПИМТ - part2](7sem/yapimt/README.md)
+  * [Лекция №3](7sem/yapimt/3.md)
