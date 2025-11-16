@@ -28,4 +28,6 @@
   * [1. Введение в КГ](7sem/kg/1.md)
   * [2. Введение в OpenGL](7sem/kg/2.md)
 * [ЯПИМТ - part2](7sem/yapimt/README.md)
+  * [Лекция №1](7sem/yapimt/lekciya-1.md)
+  * [Лекция №2](7sem/yapimt/lekciya-2.md)
   * [Лекция №3](7sem/yapimt/3.md)
