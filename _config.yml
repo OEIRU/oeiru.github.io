@@ -1,4 +1,8 @@
 theme: jekyll-theme-primer
+title: OEIRU
+description: Портфолио, учебные заметки и проекты
+include:
+  - .gitbook
 exclude:
-  - study/
-  - .gitbook/
+  - .agents/
+  - .codex/

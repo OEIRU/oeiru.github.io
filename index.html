@@ -1,303 +1,593 @@
 <!DOCTYPE html>
-<html lang="ru" class="dark">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OEIRU | VKostovsky</title>
-    <meta name="description" content="Personal portfolio of VKostovsky - C++, Python, JavaScript developer, OpenGL enthusiast">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Inter', system-ui, sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .skill-tag {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-tag:hover {
-            transform: translateY(-2px);
-        }
-        
-        .social-link {
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            transform: translateY(-3px);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OEIRU | Портфолио</title>
+  <meta name="description" content="Портфолио OEIRU: C++, Python, JavaScript, OpenGL, учебные заметки и контакты.">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f6f4ef;
+      --surface: #ffffff;
+      --surface-soft: #ece7dd;
+      --text: #1f2328;
+      --muted: #667085;
+      --line: #d8d0c1;
+      --accent: #0f766e;
+      --accent-strong: #115e59;
+      --accent-warm: #c2410c;
+      --shadow: 0 24px 70px rgba(31, 35, 40, 0.10);
+      --radius: 8px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #121512;
+      --surface: #1c211d;
+      --surface-soft: #252b26;
+      --text: #f3f0e8;
+      --muted: #a8b0a9;
+      --line: #364037;
+      --accent: #5eead4;
+      --accent-strong: #99f6e4;
+      --accent-warm: #fb923c;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--accent);
+      font-size: 15px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a,
+    .theme-toggle {
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 9px 11px;
+      color: var(--muted);
+      background: transparent;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover,
+    .theme-toggle:hover {
+      color: var(--text);
+      border-color: var(--line);
+      background: var(--surface);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 42px;
+      align-items: center;
+      padding: 76px 0 44px;
+    }
+
+    .eyebrow {
+      color: var(--accent-warm);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 20px;
+      font-size: clamp(42px, 8vw, 86px);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 22px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 22px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 10px 16px;
+      font-weight: 700;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .button.primary:hover {
+      background: var(--accent-strong);
+    }
+
+    .terminal {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .terminal-bar {
+      display: flex;
+      gap: 6px;
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface-soft);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-warm);
+    }
+
+    .dot:nth-child(2) {
+      background: #d6a823;
+    }
+
+    .dot:nth-child(3) {
+      background: var(--accent);
+    }
+
+    .terminal-body {
+      padding: 22px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .terminal-body strong {
+      color: var(--accent-strong);
+      font-weight: 700;
+    }
+
+    section {
+      padding: 54px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .section-heading p {
+      max-width: 520px;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 22px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-soft);
+      padding: 6px 9px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .project {
+      display: flex;
+      flex-direction: column;
+      min-height: 230px;
+    }
+
+    .project .button {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    .note-link {
+      display: block;
+      min-height: 100%;
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+
+    .note-link:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      padding: 28px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .nav-inner,
+      .section-heading,
+      .contact {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-inner {
+        padding: 12px 0;
+      }
+
+      .hero,
+      .grid,
+      .grid.two,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .button,
+      .actions a {
+        width: 100%;
+      }
+
+      .terminal-body {
+        font-size: 13px;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <!-- Theme Toggle -->
-    <button id="theme-toggle" class="fixed top-6 right-6 z-50 p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
-        <svg id="sun-icon" class="w-6 h-6 hidden dark:block text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-        </svg>
-        <svg id="moon-icon" class="w-6 h-6 block dark:hidden text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-        </svg>
-    </button>
+<body>
+  <header class="nav">
+    <div class="page nav-inner">
+      <a class="brand" href="#top" aria-label="OEIRU">
+        <span class="brand-mark">OE</span>
+        <span>OEIRU</span>
+      </a>
+      <nav class="nav-links" aria-label="Основная навигация">
+        <a href="#about">О себе</a>
+        <a href="#stack">Стек</a>
+        <a href="#projects">Проекты</a>
+        <a href="#notes">Заметки</a>
+        <a href="#contact">Контакты</a>
+        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Переключить тему">Тема</button>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-gray-900 dark:to-gray-800"></div>
-        <div class="absolute top-20 left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-20 right-20 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl"></div>
-        
-        <div class="relative z-10 text-center max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent animate-fade-in-up">
-                OEIRU
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-6 animate-fade-in-up" style="animation-delay: 0.1s">
-                VKostovsky
-            </p>
-            <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s">
-                Выпускник факультета прикладной математики и информатики НГТУ. 
-                Энтузиаст C++, Python, JavaScript. OpenGL-разработчик.
-            </p>
-            
-            <div class="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up" style="animation-delay: 0.3s">
-                <a href="https://t.me/VKostovsky" target="_blank" class="social-link px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full font-medium shadow-lg hover:shadow-xl">
-                    Telegram
-                </a>
-                <a href="https://vk.com/kostovske" target="_blank" class="social-link px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl">
-                    VK
-                </a>
-                <a href="mailto:VladimirKostovsky@yandex.ru" class="social-link px-6 py-3 bg-gray-800 dark:bg-gray-700 hover:bg-gray-900 dark:hover:bg-gray-600 text-white rounded-full font-medium shadow-lg hover:shadow-xl">
-                    Email
-                </a>
-            </div>
-            
-            <div class="flex justify-center gap-6 animate-fade-in-up" style="animation-delay: 0.4s">
-                <a href="https://github.com/oeiru" target="_blank" class="social-link text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-                <a href="https://www.last.fm/user/D_a_l_e_K" target="_blank" class="social-link text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-                </a>
-                <a href="https://oeiru.bearblog.dev/" target="_blank" class="social-link text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
-                </a>
-                <a href="https://x.com/VKostovsky" target="_blank" class="social-link text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="https://openvk.org/vkostovsky" target="_blank" class="social-link text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                </a>
-                <a href="https://www.tumblr.com/blog/oeiru" target="_blank" class="social-link text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.4h2.652v5.835h3.758v2.664h-3.758v7.522c0 1.129.361 2.698 2.376 2.698 1.016 0 1.815-.429 1.815-.429l1.083 2.648s-.943.514-2.189.514z"/></svg>
-                </a>
-            </div>
+  <main id="top">
+    <section class="page hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">C++ / Python / JavaScript / OpenGL</p>
+        <h1 id="hero-title">OEIRU, начинающий разработчик и исследователь графики</h1>
+        <p class="lead">
+          Собираю портфолио из учебных и личных проектов, разбираюсь в системном программировании,
+          компьютерной графике и вебе. Люблю доводить идеи до работающего прототипа.
+        </p>
+        <div class="actions" aria-label="Быстрые ссылки">
+          <a class="button primary" href="mailto:VladimirKostovsky@yandex.ru">Написать</a>
+          <a class="button" href="https://github.com/oeiru" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="#projects">Смотреть проекты</a>
         </div>
-        
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg class="w-6 h-6 text-gray-400 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
+      </div>
+
+      <div class="terminal" aria-label="Краткая карточка">
+        <div class="terminal-bar" aria-hidden="true">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
         </div>
+        <div class="terminal-body">
+          <p><strong>name</strong>: OEIRU</p>
+          <p><strong>focus</strong>: graphics, tooling, web</p>
+          <p><strong>learning</strong>: Jekyll, OpenGL, architecture</p>
+          <p><strong>status</strong>: building a portfolio</p>
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 px-6 fade-in-section">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
-                <span class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                    О себе
-                </span>
-            </h2>
-            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 md:p-12 shadow-xl">
-                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                    👋 Привет, я OEIRU!
-                </p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                    Выпускник факультета прикладной математики и информатики НГТУ. Вечный энтузиаст и любознательный исследователь мира программирования.
-                </p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                    Мне нравится не просто писать код — я стремлюсь понимать, как всё устроено «под капотом», и создавать решения, которые действительно работают.
-                </p>
-                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                    «Программирование — это не только про технологии, но и про людей, которых ты можешь вдохновить или помочь.»
-                </p>
-            </div>
-        </div>
+    <section class="page" id="about">
+      <div class="section-heading">
+        <h2>О себе</h2>
+        <p>Эта страница теперь работает как портфолио, а не как визитка из одной фразы.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>Что делаю</h3>
+          <p>Пишу небольшие программы, учебные проекты и эксперименты с графикой. Постепенно собираю практику в понятный публичный след.</p>
+        </article>
+        <article class="card">
+          <h3>Как учусь</h3>
+          <p>Разбираю темы через конспекты, прототипы и повторное объяснение своими словами. Заметки вынесены в отдельный раздел сайта.</p>
+        </article>
+        <article class="card">
+          <h3>Куда расту</h3>
+          <p>Хочу увереннее проектировать программы, лучше понимать производительность и делать интерфейсы, которыми приятно пользоваться.</p>
+        </article>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 px-6 fade-in-section">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
-                <span class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                    Навыки
-                </span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">🛠️ Технологии</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">C++</span>
-                        <span class="skill-tag px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium">Python</span>
-                        <span class="skill-tag px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">JavaScript</span>
-                        <span class="skill-tag px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">OpenGL</span>
-                        <span class="skill-tag px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">GLUT</span>
-                        <span class="skill-tag px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium">HTML/CSS</span>
-                    </div>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl">
-                    <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">🎨 Области интересов</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium">3D графика</span>
-                        <span class="skill-tag px-4 py-2 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full text-sm font-medium">Визуализация</span>
-                        <span class="skill-tag px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm font-medium">Веб-разработка</span>
-                        <span class="skill-tag px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm font-medium">Алгоритмы</span>
-                        <span class="skill-tag px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium">Архитектура ПО</span>
-                        <span class="skill-tag px-4 py-2 bg-lime-100 dark:bg-lime-900/30 text-lime-700 dark:text-lime-300 rounded-full text-sm font-medium">Системное программирование</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="page" id="stack">
+      <div class="section-heading">
+        <h2>Стек</h2>
+        <p>Для GitHub Pages здесь достаточно Jekyll, HTML и CSS. Это проще поддерживать и легко расширять заметками.</p>
+      </div>
+      <div class="grid two">
+        <article class="card">
+          <h3>Технологии</h3>
+          <p>То, с чем уже есть практика или активный интерес.</p>
+          <div class="tag-list" aria-label="Технологии">
+            <span class="tag">C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Jekyll</span>
+            <span class="tag">OpenGL</span>
+            <span class="tag">GLUT</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Темы</h3>
+          <p>Области, вокруг которых удобно строить будущие проекты портфолио.</p>
+          <div class="tag-list" aria-label="Темы">
+            <span class="tag">3D-графика</span>
+            <span class="tag">Визуализация</span>
+            <span class="tag">Алгоритмы</span>
+            <span class="tag">Системное ПО</span>
+            <span class="tag">Архитектура</span>
+            <span class="tag">Веб-интерфейсы</span>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- Study Materials Section -->
-    <section id="study" class="py-20 px-6 fade-in-section">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
-                <span class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                    Учебные материалы
-                </span>
-            </h2>
-            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl">
-                <p class="text-gray-600 dark:text-gray-300 mb-6">
-                    Конспекты лекций и материалы с университетских курсов.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <a href="study/6sem/urvs/README.md" class="block p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                        <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">УРВС</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Управление ресурсами вычислительных систем</p>
-                    </a>
-                    <a href="study/6sem/gidroded/README.md" class="block p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                        <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">Гидродед</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Лекции по гидродинамике</p>
-                    </a>
-                    <a href="study/7sem/kg/README.md" class="block p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                        <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">Компьютерная графика</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Введение в КГ и OpenGL</p>
-                    </a>
-                    <a href="study/7sem/yapimt/README.md" class="block p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                        <h3 class="font-semibold text-gray-800 dark:text-gray-200 mb-2">ЯПИМТ</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">Языки и методы программирования</p>
-                    </a>
-                </div>
-            </div>
-        </div>
+    <section class="page" id="projects">
+      <div class="section-heading">
+        <h2>Проекты</h2>
+        <p>Лучше показывать даже небольшие завершённые вещи: что было задачей, что получилось и чему научился.</p>
+      </div>
+      <div class="grid">
+        <article class="card project">
+          <h3>OpenGL experiments</h3>
+          <p>Место для учебных сцен, визуализаций и заметок по графическому пайплайну.</p>
+          <div class="tag-list">
+            <span class="tag">C++</span>
+            <span class="tag">OpenGL</span>
+          </div>
+          <a class="button" href="https://github.com/oeiru" target="_blank" rel="noreferrer">GitHub</a>
+        </article>
+        <article class="card project">
+          <h3>Study notes</h3>
+          <p>Раздел с конспектами по программированию, системам и компьютерной графике.</p>
+          <div class="tag-list">
+            <span class="tag">Jekyll</span>
+            <span class="tag">Markdown</span>
+          </div>
+          <a class="button" href="study/">Открыть</a>
+        </article>
+        <article class="card project">
+          <h3>Portfolio site</h3>
+          <p>Сам сайт тоже можно считать проектом: простой стек, быстрая загрузка, понятная структура.</p>
+          <div class="tag-list">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">GitHub Pages</span>
+          </div>
+          <a class="button" href="https://github.com/oeiru/oeiru.github.io" target="_blank" rel="noreferrer">Код</a>
+        </article>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 fade-in-section">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8">
-                <span class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                    Связаться со мной
-                </span>
-            </h2>
-            <p class="text-xl text-gray-600 dark:text-gray-300 mb-12">
-                Буду рад пообщаться или обсудить интересные проекты!
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="mailto:VladimirKostovsky@yandex.ru" class="social-link px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all">
-                    📩 Написать письмо
-                </a>
-                <a href="https://t.me/VKostovsky" target="_blank" class="social-link px-8 py-4 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all">
-                    💬 Telegram
-                </a>
-            </div>
-        </div>
+    <section class="page" id="notes">
+      <div class="section-heading">
+        <h2>Заметки</h2>
+        <p>Jekyll хорошо подходит для этой части: Markdown-файлы можно постепенно превращать в нормальную базу знаний.</p>
+      </div>
+      <div class="grid two">
+        <a class="card note-link" href="study/">
+          <h3>Учебные материалы</h3>
+          <p>Главная страница раздела с конспектами и ссылками на существующие курсы.</p>
+        </a>
+        <a class="card note-link" href="https://oeiru.bearblog.dev/" target="_blank" rel="noreferrer">
+          <h3>Блог</h3>
+          <p>Отдельное место для более свободных записей, мыслей и коротких публикаций.</p>
+        </a>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-8 px-6 border-t border-gray-200 dark:border-gray-800">
-        <div class="max-w-4xl mx-auto text-center text-gray-600 dark:text-gray-400">
-            <p>&copy; 2026 OEIRU. Все права защищены.</p>
+    <section class="page" id="contact">
+      <div class="contact">
+        <div>
+          <h2>Связаться</h2>
+          <p>Открыт к общению, идеям для учебных проектов и обратной связи по коду.</p>
         </div>
-    </footer>
+        <div class="actions">
+          <a class="button primary" href="mailto:VladimirKostovsky@yandex.ru">Email</a>
+          <a class="button" href="https://t.me/VKostovsky" target="_blank" rel="noreferrer">Telegram</a>
+          <a class="button" href="https://vk.com/kostovske" target="_blank" rel="noreferrer">VK</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        
-        // Check for saved theme preference or default to dark
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        html.classList.remove('light', 'dark');
-        html.classList.add(savedTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            html.classList.remove(currentTheme);
-            html.classList.add(newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-        
-        // Scroll Animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.fade-in-section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+  <footer class="page">
+    <span>© 2026 OEIRU. Сделано на GitHub Pages и Jekyll.</span>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('theme');
+    const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    root.dataset.theme = savedTheme || (preferredDark ? 'dark' : 'light');
+
+    toggle.addEventListener('click', () => {
+      const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = nextTheme;
+      localStorage.setItem('theme', nextTheme);
+    });
+  </script>
 </body>
 </html>

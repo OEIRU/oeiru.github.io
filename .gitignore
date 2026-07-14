@@ -27,6 +27,7 @@ Icon
 .Trashes
 .VolumeIcon.icns
 
+
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
@@ -34,3 +35,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 build.sh
+.agents
+.codex
